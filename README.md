@@ -94,11 +94,12 @@ The eye-tracking data used in this study is available at [dataset link]. The rep
 If you find this work useful for your research, please cite our paper:
 
 ```bibtex
-@inproceedings{
-  author = {Author1 and Author2 and Author3},
-  title = {Seeing Eye to AI: Human Alignment via Gaze-Based Response Rewards for Large Language Models},
+@inproceedings{Lopez-Cardona2025Seeing,
+  title     = {Seeing Eye to AI: Human Alignment via Gaze-Based Response Rewards for Large Language Models},
+  author    = {L{\'o}pez-Cardona, {\'A}ngela and Segura, Carlos and Karatzoglou, Alexandros and Abadal, Sergi and Arapakis, Ioannis},
   booktitle = {International Conference on Learning Representations (ICLR)},
-  year = {2025}
+  year      = {2025},
+  url       = {https://openreview.net/forum?id=uZgK0tcPqd}
 }
 ```
 
