@@ -24,11 +24,11 @@ To install and run the project:
 4. Install the tokenizer aligner package:
 
 ```bash
-pip install git+https://github.com/anlopez94/tokenizer_aligner.git
+pip install git+https://github.com/anlopez94/tokenizer_aligner.git@v1.0.0
 ```
 5. Install the eyetrackpy package:
 ```bash
-pip install git+https://github.com/anlopez94/eyetrackpy.git
+pip install git+https://github.com/anlopez94/eyetrackpy.git@v1.0.0
 ```
 6. Navigate to the rlhf_rw directory
 
