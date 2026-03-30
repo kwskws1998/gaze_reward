@@ -173,3 +173,5 @@ rlhf_rw/cache/
 rlhf_rw/wandb/
 checkpoints/*.pt
 checkpoints/*.safetensors
+checkpoints/*.pt
+checkpoints/*.safetensors
