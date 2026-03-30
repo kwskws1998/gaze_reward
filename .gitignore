@@ -171,3 +171,5 @@ cython_debug/
 .pypirc
 rlhf_rw/cache/
 rlhf_rw/wandb/
+checkpoints/*.pt
+checkpoints/*.safetensors
