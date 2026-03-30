@@ -1,5 +1,6 @@
 
 import sys
+import os
 
 
 # sys.path.append('/home/csp/repo/LLMs/eye_transformer/')
@@ -32,9 +33,20 @@ from eyetrackpy.data_generator.fixations_predictor_trained_1.fixations_predictor
     FixationsPredictor_1,
 )
 
-from eyetrackpy.data_generator.fixations_predictor_trained_2.fixations_predictor_model_2 import (
-    FixationsPredictor_2,
-)
+# ET model 2: eyetrackpy의 원본 가중치 대신 사용자 학습 체크포인트 래퍼 사용.
+# ET2_CHECKPOINT_PATH 환경변수로 체크포인트 경로 지정 (setup_et_models.py 참고).
+try:
+    from et2_wrapper import FixationsPredictor_2
+except ImportError:
+    # 혹시 경로 문제가 있을 경우 절대경로로 재시도
+    import importlib.util, pathlib as _pl
+    _spec = importlib.util.spec_from_file_location(
+        "et2_wrapper",
+        str(_pl.Path(__file__).parent.parent.parent / "et2_wrapper.py"),
+    )
+    _mod = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(_mod)
+    FixationsPredictor_2 = _mod.FixationsPredictor_2
 from typing import (
     TypeVar,
 )
@@ -54,7 +66,10 @@ class MyRewardBase:
         self.features_used = features_used
         self.model_name = model_name
         self.memory_storage = LMDBStorage(
-            db_path="/data/alop/eye_transformer/rlhf_rw/buffer_train.lmdb"
+            db_path=os.environ.get(
+                "LMDB_CACHE_PATH",
+                os.path.join(os.getcwd(), "buffer_train.lmdb"),
+            )
         )
 
     def _load_tokenizer(self, load_local_folder_name=None):
